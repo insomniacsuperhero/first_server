@@ -4,7 +4,11 @@ const app = express();
 
 
 app.get('/hello',(req,res)=>{
-    res.send('Hello World')
+    let name = 'Guest'
+    if(req.query.user){
+        name = req.query.user
+    }
+    res.send('Hello World '+name)
 })
 
 app.use('/abc', express.static(__dirname+'/public'))
